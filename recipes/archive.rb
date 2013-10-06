@@ -18,7 +18,7 @@ execute "Installing gflags #{node['gflags']['archive']['version']} archive" do
   command "./configure --prefix=#{node['gflags']['archive']['install_dir']} && make && make check && make install"
   creates "#{node['gflags']['archive']['install_dir']}/lib/gflags.so"
   action :run
-  notifies :run, "execute[ldconfig]"
+  notifies :run, "execute[ldconfig]", :immediately
 end
 
 execute "ldconfig" do
