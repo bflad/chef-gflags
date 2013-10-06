@@ -1,4 +1,12 @@
-default['gflags']['install_type'] = "package"
+default['gflags']['install_type'] = value_for_platform(
+  %w{centos fedora redhat} => {
+    "default" => "package"
+  },
+  %w{ubuntu} => {
+    "12.04" => "archive",
+    "default" => "package"
+  }
+)
 
 # Source attributes
 default['gflags']['archive']['install_dir'] = "/usr/local"
