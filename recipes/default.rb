@@ -1,1 +1,2 @@
-include_recipe "gflags::#{node['gflags']['install_type']}"
+include_recipe "gflags::cpp"
+include_recipe "gflags::python"

@@ -27,7 +27,7 @@ These attributes are under the `node['gflags']` namespace.
 
 Attribute | Description | Type | Default
 ----------|-------------|------|--------
-install_type | Installation type for gflags ("archive" or "package") | String | "package"
+install_type | Override platform and version auto-detection for installation ("archive" or "package") | String | nil (auto-detect)
 
 ### Archive Attributes
 
@@ -53,26 +53,35 @@ python_packages | Python packages for installation | Array of Strings | auto-det
 
 * `recipe[gflags]` Installs gflags
 * `recipe[gflags::archive]` Installs gflags via archive
-* `recipe[gflags::package]` Installs gflags via package
+* `recipe[gflags::cpp]` Installs gflags C++
 * `recipe[gflags::package_cpp]` Installs gflags C++ packages
 * `recipe[gflags::package_python]` Installs gflags Python packages
+* `recipe[gflags::python]` Installs gflags Python
 
 ## Usage
 
 ### Default Installation
 
-Defaults to installing all packages and handling apt/yum::epel dependencies.
+Installs gflags C++ and Python. Recommended to use `cpp` and `python` directly instead.
 
 * Add `recipe[gflags]` to your node's run list
+
+### C++ Installation Only
+
+Installs gflags C++ via archive or package depending on platform and version auto-detection or `node['gflags']['install_type']` if set.
+
+* Add `recipe['gflags::cpp']` to your node's run list
+
+### Python Installation Only
+
+Installs gflags Python via archive or package depending on platform and version auto-detection or `node['gflags']['install_type']` if set.
+
+* Add `recipe['gflags::python']` to your node's run list
 
 ### Archive Installation
 
 * If necessary, set `node['gflags']['archive']['version']` and `node['gflags']['archive']['checksum']`
 * Set `node['gflags']['install_type']` to "archive" or add `recipe['gflags::archive']` to your node's run list
-
-### All Packages Installation
-
-* Add `recipe['gflags::package']` to your node's run list
 
 ### C++ Package Installation Only
 
