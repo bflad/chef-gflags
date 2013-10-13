@@ -5,7 +5,7 @@ module Helpers
     include MiniTest::Chef::Resources
 
     def gflags_packages_cpp
-      case node['plaform']
+      case node['platform']
       when "centos", "fedora", "redhat"
         %w{gflags gflags-devel}
       when "ubuntu"
@@ -14,7 +14,7 @@ module Helpers
     end
 
     def gflags_packages_python
-      case node['plaform']
+      case node['platform']
       when "centos", "fedora", "redhat"
         %w{gflags-python}
       when "ubuntu"
