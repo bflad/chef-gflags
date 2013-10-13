@@ -5,25 +5,21 @@ module Helpers
     include MiniTest::Chef::Resources
 
     def gflags_packages_cpp
-      value_for_platform(
-        %w{centos fedora redhat} => {
-          "default" => %w{gflags gflags-devel}
-        },
-        %w{ubuntu} => {
-          "default" => %w{libgflags2 libgflags-dev}
-        }
-      )
+      case node['plaform']
+      when "centos", "fedora", "redhat"
+        %w{gflags gflags-devel}
+      when "ubuntu"
+        %w{libgflags2 libgflags-dev}
+      end
     end
 
     def gflags_packages_python
-      value_for_platform(
-        %w{centos fedora redhat} => {
-          "default" => %w{gflags-python}
-        },
-        %w{ubuntu} => {
-          "default" => %w{python-gflags}
-        }
-      )
+      case node['plaform']
+      when "centos", "fedora", "redhat"
+        %w{gflags-python}
+      when "ubuntu"
+        %w{python-gflags}
+      end
     end
   end
 end
