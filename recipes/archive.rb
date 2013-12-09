@@ -1,9 +1,9 @@
-include_recipe "build-essential"
+include_recipe 'build-essential'
 
 remote_file "#{Chef::Config[:file_cache_path]}/gflags-#{node['gflags']['archive']['version']}.tar.gz" do
   source    node['gflags']['archive']['url']
   checksum  node['gflags']['archive']['checksum']
-  mode      "0644"
+  mode      '0644'
   action    :create_if_missing
 end
 
@@ -18,10 +18,10 @@ execute "Installing gflags #{node['gflags']['archive']['version']} archive" do
   command "./configure --prefix=#{node['gflags']['archive']['install_dir']} && make && make check && make install"
   creates "#{node['gflags']['archive']['install_dir']}/lib/gflags.so"
   action :run
-  notifies :run, "execute[ldconfig]", :immediately
+  notifies :run, 'execute[ldconfig]', :immediately
 end
 
-execute "ldconfig" do
-  command "ldconfig"
+execute 'ldconfig' do
+  command 'ldconfig'
   action :nothing
 end
