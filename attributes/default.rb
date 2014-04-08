@@ -11,18 +11,18 @@ default['gflags']['archive']['checksum'] =
 
 # Package attributes
 default['gflags']['package']['cpp_packages'] = value_for_platform(
-  %w{centos fedora redhat} => {
-    'default' => %w{gflags gflags-devel}
+  %w(centos fedora redhat) => {
+    'default' => %w(gflags gflags-devel)
   },
-  %w{ubuntu} => {
-    'default' => %w{libgflags2 libgflags-dev}
+  %w(ubuntu) => {
+    'default' => %w(libgflags2 libgflags-dev)
   }
 )
 default['gflags']['package']['python_packages'] = value_for_platform(
-  %w{centos fedora redhat} => {
-    'default' => %w{gflags-python}
+  %w(centos fedora redhat) => {
+    'default' => %w(gflags-python)
   },
-  %w{ubuntu} => {
-    'default' => %w{python-gflags}
+  %w(ubuntu) => {
+    'default' => %w(python-gflags)
   }
 )
